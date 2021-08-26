@@ -1,23 +1,58 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
+
+import Post from './Components/Post';
+import {useDispatch, useSelector} from  'react-redux';
 import './App.css';
 
 function App() {
+  const  postStore = useSelector(store => store.postInfo);
+  console.log('postStore', postStore)
+  const dispatch = useDispatch()
+
+  const [addText, setAddText] = useState('A genius, billionaire, playboy, philanthroist!');
+  const [addImage, setAddImage] = useState("https://i.ytimg.com/vi/W54Y0cn78NY/maxresdefault.jpg");
+  const [addName, setAddName] = useState('Tony Stark');
+
+  const addNewPost = {
+    type: 'add-post',
+    newPost: {
+      addText,
+      addImage,
+      addName,
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form>
+        <input 
+          type="text" 
+          placeholder="Write your text"
+          value={addText}
+          onChange={(e) => {setAddText(e.target.value)}}/>
+        <input 
+          type="text" 
+          placeholder="Insert link to image"
+          value={addImage}
+          onChange={(e) => {setAddImage(e.target.value)}}/>
+        <select 
+          value={addName}
+          onChange={(e) => {setAddName(e.target.value)}}>
+          <option>
+            Tony Stark
+          </option>
+          <option>
+            Dr. Strange
+          </option>
+          <option>
+            Frank Castle
+          </option>
+        </select>
+        <button type="button" onClick={() => dispatch(addNewPost)} >Додати</button>
+      </form>
+      <div>
+        {postStore.map(post => <Post {...post} key = {post.id}/>)}
+      </div>
     </div>
   );
 }
