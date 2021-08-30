@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 
-import {Publication, Header, Photo, UserInfo, UserData, Name, Nickname, Date, UserContent, Image, BoxBotton, Likes, Comments, Share} from './Ui'
+import {Publication, Header, Photo, UserInfo, UserData, Name, Nickname, Date, UserContent, Image, BoxBotton, Likes, Comments, Share} from './StyledComponents/Ui'
 
 export default function Post (props) {
     const [likes, setLikes] = useState(+(`${Math.floor(Math.random() * 1000) + 1}`));

@@ -1,4 +1,4 @@
-import posts from './InfoForPost'
+import posts from '../InfoForPost'
 
 const initialState = {
     postInfo: posts
@@ -8,7 +8,7 @@ const IMAGE = "https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-c
 
 function myReducer (state = initialState, action) {
     switch (action.type) {
-        case 'add-post': {
+        case 'ADD-POST': {
             return {
                 postInfo: [...state.postInfo, {
                     name: action.newPost.addName,
@@ -17,9 +17,6 @@ function myReducer (state = initialState, action) {
                     content: action.newPost.addText,
                     image: action.newPost.addImage,
                     date: `${Date().toString().slice(4, 10)}`,
-                    // coments: `${Math.floor(Math.random() * 500) + 1}`,
-                    // share: `${Math.floor(Math.random() * 100) + 1}`,
-                    // likes: `${Math.floor(Math.random() * 1000) + 1}`,
                 }]
             };
         }

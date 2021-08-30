@@ -6,7 +6,6 @@ import './App.css';
 
 function App() {
   const  postStore = useSelector(store => store.postInfo);
-  console.log('postStore', postStore)
   const dispatch = useDispatch()
 
   const [addText, setAddText] = useState('A genius, billionaire, playboy, philanthroist!');
@@ -14,7 +13,7 @@ function App() {
   const [addName, setAddName] = useState('Tony Stark');
 
   const addNewPost = {
-    type: 'add-post',
+    type: 'ADD-POST',
     newPost: {
       addText,
       addImage,
